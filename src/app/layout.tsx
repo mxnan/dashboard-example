@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Kanit } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "../styles/globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
 
-const bodyfont = Kanit({
+import Navbar from "@/components/navbar";
+import LinksBar from "@/components/links-bar";
+
+const bodyfont = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-const titlefont = Bebas_Neue({
-  subsets: ["latin"],
-  variable: "--font-title",
-  display: "swap",
-  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -29,22 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "max-w-7xl mx-auto font-body antialiased",
-          bodyfont.variable,
-          titlefont.variable
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="en">
+      <body className={cn("font-body antialiased", bodyfont.variable)}>
+        <Navbar />
+        <LinksBar />
+        {children}
       </body>
     </html>
   );

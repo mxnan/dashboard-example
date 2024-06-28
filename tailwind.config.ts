@@ -13,11 +13,10 @@ const config = {
     extend: {
       fontFamily: {
         body: ["var(--font-body)"],
-        title: ["var(--font-title)"],
+       
       },
       colors: {
-        lightaccent: "#f5f5f5",
-        darkaccent: "#0f0f0f",
+        lightaccent: "#DC4A2D",
       },
     },
   },
