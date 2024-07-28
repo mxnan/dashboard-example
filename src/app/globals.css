@@ -2,11 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   @apply bg-white text-black;
 }
 .dark {
   @apply bg-black text-white;
+}
+
+@layer utilities {
+  .fixed-nav {
+    backdrop-filter: saturate(200%) blur(20px);
+    transition: background-color 0.1 ease-in-out;
+  }
+  .flexcenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

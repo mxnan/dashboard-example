@@ -3,7 +3,8 @@ import { Outfit as FontSans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { createMetadata } from "@/lib/utils";
-import Navbar from "@/components/navbar";
+import { Navbar } from "@/components/navbar";
+
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <div className="max-w-[1686px] mx-auto container">
-            <main className="min-h-screen w-full flexcenter pt-24">
+            <main className="min-h-[200vh] w-full flexcenter pt-24">
               {children}
             </main>
           </div>
