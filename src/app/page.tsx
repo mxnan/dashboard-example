@@ -1,4 +1,4 @@
-import ThemeToggle from "@/components/container/theme-toggle";
+import ThemeToggle from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { createMetadata } from "@/lib/utils";
 import { Metadata } from "next";
