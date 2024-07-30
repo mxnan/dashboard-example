@@ -27,13 +27,15 @@ export const MenuItem = ({
   icon?: React.ReactNode;
   children?: React.ReactNode;
 }) => {
+  // Create an absolute path
+  const href = item.startsWith("/") ? item : `/${item.toLowerCase()}`;
   return (
     <div
       onClick={() => setActive(item)}
       onMouseEnter={() => setActive(item)}
       className="relative group/item"
     >
-      <Link href={`${item}`}>
+      <Link href={href}>
         <motion.p
           transition={{ duration: 0.3 }}
           className={cn(

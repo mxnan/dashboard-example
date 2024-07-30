@@ -39,9 +39,9 @@ export function Navbar() {
   }, []);
   // useEffect for window resize
   return (
-    <nav className="relative w-full z-50 ">
+    <header className="relative w-full z-50 ">
       {isMobile ? <MobileNav /> : <DesktopNav />}
-    </nav>
+    </header>
   );
 }
 function DesktopNav({ className }: { className?: string }) {
@@ -98,7 +98,7 @@ function DesktopNav({ className }: { className?: string }) {
 
         <Menu setActive={setActive}>
           {/*Solutions*/}
-          <MenuItem setActive={setActive} active={active} item="custom">
+          <MenuItem setActive={setActive} active={active} item="components">
             <div className="relative flex max-xl:flex-col gap-4">
               <ContentCard
                 title="How a multi-billion dollar manufacturer boosted sales volume with Industrial AI."
