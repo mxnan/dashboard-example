@@ -15,7 +15,7 @@ export const MdxLink: React.FC<MdxLinkProps> = ({
   if (href && (href.startsWith("/") || href.startsWith("#"))) {
     return (
       <Link href={href} {...rest}>
-        <Button variant={"link"} className="text-base">
+        <Button variant={"default"} className="text-base">
           {children}
         </Button>
       </Link>

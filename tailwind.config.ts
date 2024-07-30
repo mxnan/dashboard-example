@@ -27,19 +27,13 @@ const config: Config = {
       colors: {
         black: "#090A0B",
         white: "#FFFFFF",
-        gray: {
-          100: "#DEE2E6",
-          200: "#CED4DA",
-
-          500: "#ADB5BD",
-
-          800: "#495057",
-          900: "#343A40",
-        },
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/typography"),
+    // ...
+  ],
 };
 
 export default config;

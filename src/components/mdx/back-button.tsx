@@ -1,5 +1,5 @@
 "use client";
-import { ChevronLeft } from "lucide-react";
+import { ArrowLeftCircleIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
 import { Button } from "../ui/button";
@@ -13,10 +13,11 @@ export const BackButton: FC<BackButtonProps> = ({ href }) => {
 
   return (
     <Button
-      className="mb-8 flex flex-row items-center text-red-500 no-underline hover:text-red-500/70"
+      variant={"destructive"}
+      className="flex gap-2 items-center"
       onClick={() => router.back()}
     >
-      <ChevronLeft size={17} />
+      <ArrowLeftCircleIcon className="w-5 h-5" />
       Back
     </Button>
   );

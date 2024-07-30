@@ -6,9 +6,9 @@ import React from "react";
 export const metadata = createMetadata("Home", "homepage description");
 export default function page() {
   return (
-    <div>
+    <section className="min-h-screen w-full">
       <Button>Button</Button>
       <ThemeToggle />
-    </div>
+    </section>
   );
 }
