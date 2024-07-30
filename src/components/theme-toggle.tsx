@@ -1,49 +1,95 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ThemeToggle = () => {
-  // State for handling theme (dark/light mode)
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  // After mounting, set mounted to true to enable theme handling
   useEffect(() => setMounted(true), []);
+
+  const switchTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const toggleTheme = () => {
+    setIsAnimating(true);
+    // @ts-ignore
+    if (!document.startViewTransition) {
+      switchTheme();
+      setTimeout(() => setIsAnimating(false), 200); // Match animation duration
+      return;
+    }
+    // @ts-ignore
+    document.startViewTransition(() => {
+      switchTheme();
+      setTimeout(() => setIsAnimating(false), 200); // Match animation duration
+    });
+  };
+
+  const iconVariants = {
+    initial: { y: -30, x: 0, opacity: 0, transition: { duration: 0.2 } },
+    exit: { y: 0, x: 30, opacity: 0, transition: { duration: 0.2 } },
+    enter: { y: 0, x: 0, opacity: 1, transition: { duration: 0.2 } },
+  };
+
   return (
-    <>
-      <button
-        aria-label="Toggle Dark Mode"
-        type="button"
-        className="dark-mode-toggle"
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      >
-        {mounted && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            stroke="currentColor"
-            className="h-5 w-5 text-violet-600 dark:text-emerald-600"
-          >
-            {theme === "dark" ? (
+    <button
+      aria-label="Toggle Dark Mode"
+      type="button"
+      className="dark-mode-toggle relative rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+      onClick={toggleTheme}
+    >
+      {mounted && (
+        <AnimatePresence initial={false}>
+          {theme === "light" || isAnimating ? (
+            <motion.svg
+              key="sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              stroke="currentColor"
+              className="h-5 w-5 text-violet-600 absolute"
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              variants={iconVariants}
+              transition={{ duration: 0.2 }}
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
               />
-            ) : (
+            </motion.svg>
+          ) : (
+            <motion.svg
+              key="moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              stroke="currentColor"
+              className="h-5 w-5 text-emerald-600 absolute"
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              variants={iconVariants}
+              transition={{ duration: 0.2 }}
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
               />
-            )}
-          </svg>
-        )}
-      </button>
-    </>
+            </motion.svg>
+          )}
+        </AnimatePresence>
+      )}
+    </button>
   );
 };
 

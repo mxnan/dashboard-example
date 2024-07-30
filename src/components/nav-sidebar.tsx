@@ -40,7 +40,9 @@ export default function NavigationSidebar() {
               href={link.href}
               className={cn(
                 "ml-3 text-sm font-medium hover:text-gray-500 hover:dark:text-gray-400 transition-colors ease-in-out duration-500",
-                pathname === link.href ? "text-stone-500 dark:text-stone-400" : ""
+                pathname === link.href
+                  ? "text-stone-500 dark:text-stone-400"
+                  : ""
               )}
             >
               {link.title}

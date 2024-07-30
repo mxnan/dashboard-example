@@ -60,9 +60,9 @@ const MobileNav = () => {
   };
 
   return (
-    <div className="relative w-full z-50">
+    <div className="relative w-full z-50 bg-white dark:bg-black  ">
       <div
-        className="fixed top-2
+        className="fixed top-2 fixed-nav
       flex items-center justify-between py-4 container"
       >
         <ThemeToggle />

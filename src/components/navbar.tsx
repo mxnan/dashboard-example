@@ -39,7 +39,7 @@ export function Navbar() {
   }, []);
   // useEffect for window resize
   return (
-    <header className="relative w-full z-50 ">
+    <header className="relative w-full z-50 bg-white dark:bg-black ">
       {isMobile ? <MobileNav /> : <DesktopNav />}
     </header>
   );
@@ -86,7 +86,7 @@ function DesktopNav({ className }: { className?: string }) {
         restDelta: 0.001,
       }}
       className={cn(
-        "w-full fixed-nav fixed top-0 dark:border-stone-800 max-sm:py-6 inset-x-0  backdrop-blur-[20px] ",
+        "w-full fixed-nav fixed top-0 dark:border-stone-800 max-sm:py-6 inset-x-0   ",
         isHidden ? "border-b-[5px] " : "border-b-[1px]",
         className
       )}
