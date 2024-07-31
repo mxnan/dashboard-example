@@ -97,7 +97,7 @@ function DesktopNav({ className }: { className?: string }) {
         </Link>
 
         <Menu setActive={setActive}>
-          {/*Solutions*/}
+          {/* Components */}
           <MenuItem setActive={setActive} active={active} item="components">
             <div className="relative flex max-xl:flex-col gap-4">
               <ContentCard
@@ -112,24 +112,24 @@ function DesktopNav({ className }: { className?: string }) {
                 src="/og.jpg"
                 description="Industrial AI built a custom automated quoting solution using Generative AI integrated with ERP and CRM systems."
               />
-
             </div>
           </MenuItem>
-          {/*Our  Approach*/}
-          <MenuItem
-            setActive={setActive}
-            active={active}
-            icon={<CircleArrowDownIcon className="h-5 w-5" />}
-            item="/"
-          >
-            <Button
-              variant={"ghost"}
-              size={"lg"}
-              className="flex  font-semibold items-center gap-3 group/button "
-            >
-              <Link href={"/approach"}>Our Approach</Link>
-              <CircleArrowRightIcon className="w-5 h-5 group-hover/button:rotate-[25deg] transition-transform ease-in-out duration-200" />
-            </Button>
+          {/*Blogs*/}
+          <MenuItem setActive={setActive} active={active} item="blogs">
+            <div className="relative flex max-xl:flex-col gap-4">
+              <ContentCard
+                title="How a multi-billion dollar manufacturer boosted sales volume with Industrial AI."
+                href="/blogs"
+                src="/og.jpg"
+                description="Industrial AI built a custom automated quoting solution using Generative AI integrated with ERP and CRM systems."
+              />
+              <ContentCard
+                title="How a multi-billion dollar manufacturer boosted sales volume with Industrial AI."
+                href="/blogs/2"
+                src="/og.jpg"
+                description="Industrial AI built a custom automated quoting solution using Generative AI integrated with ERP and CRM systems."
+              />
+            </div>
           </MenuItem>
           {/*Security*/}
           <MenuItem

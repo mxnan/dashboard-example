@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+
 import { Outfit as FontSans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { createMetadata } from "@/lib/utils";
+
 import { Navbar } from "@/components/navbar";
 
 
@@ -11,7 +11,7 @@ export const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-export const metadata: Metadata = createMetadata("", "");
+
 export default function RootLayout({
   children,
 }: Readonly<{

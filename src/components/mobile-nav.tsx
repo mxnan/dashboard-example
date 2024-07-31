@@ -10,13 +10,13 @@ const mobileLinks = [
     link: "/",
   },
   {
-    name: "Custom",
-    link: "/custom",
+    name: "Components",
+    link: "/components",
   },
 
   {
-    name: "Blog",
-    link: "/blog",
+    name: "Blogs",
+    link: "/blogs",
   },
 
   {
@@ -62,7 +62,7 @@ const MobileNav = () => {
   return (
     <div className="relative w-full z-50 bg-white dark:bg-black  ">
       <div
-        className="fixed top-2 fixed-nav
+        className="fixed top-0 fixed-nav
       flex items-center justify-between py-4 container"
       >
         <ThemeToggle />
