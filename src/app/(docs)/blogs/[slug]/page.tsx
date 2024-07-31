@@ -5,10 +5,15 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { TableOfContents } from "@/components/mdx/toc";
 
 const MDXContent = dynamic(() => import("@/components/mdx/mdx-renderer"), {
   ssr: false,
 });
+const DynamicTableOfContents = dynamic(() => import('@/components/mdx/toc').then(mod => mod.TableOfContents), {
+  ssr: false
+})
+
 
 export default async function BlogPost({
   params,
@@ -16,19 +21,20 @@ export default async function BlogPost({
   params: { slug: string };
 }) {
   const post = getBlogBySlug(params.slug);
+
   const mdxSource = await serialize(post.content);
 
   return (
     <article className="relative flex w-full h-full">
       {/* Back button */}
-      <div className="sticky top-32 h-fit pr-6 lg:pr-16">
+      <div className="sticky top-32 h-fit hidden sm:block sm:pr-12 lg:pr-16">
         <Button variant={"destructive"}>
           <Link href="/blogs">Back</Link>
         </Button>
       </div>
       {/* Content */}
       <div className="space-y-12 w-full flex-1">
-        <div className="flex lg:px-4 justify-between">
+        <div className="flex lg:px-4 py-2 justify-between">
           <div className="space-y-4 pr-2">
             <h1 className="text-4xl">{post.title}</h1>
             <p className="text-xl">{post.description}</p>
@@ -42,10 +48,11 @@ export default async function BlogPost({
               </span>
             ))}
           </div>
-          <div className="relative max-md:hidden max-w-[300px] aspect-video w-full">
+          <div className="relative hidden md:block max-w-[300px] aspect-video w-full">
             <Image
               src={"/og.jpg"}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               alt="og"
               priority
               className="rounded-xl border border-custom "
@@ -53,15 +60,20 @@ export default async function BlogPost({
           </div>
         </div>
         {/* Mdx Content */}
-        <div className="prose-sm">
+        <div className="prose-sm py-2">
           <MDXContent source={mdxSource} />
+          <div className="flexcenter md:hidden py-4 border-custom border-t">
+            <Button variant={"destructive"}>
+              <Link href="/blogs">Back</Link>
+            </Button>
+          </div>
         </div>
       </div>
-      {/* Toc button */}
+      {/* Toc Links */}
       <div className="hidden md:block sticky top-32 h-fit pl-6 lg:pl-16">
-        <Button variant={"destructive"}>
-          <Link href="/blogs">Table of contents</Link>
-        </Button>
+        <div className="flex-1 space-y-3">
+          <DynamicTableOfContents toc={post.toc} />
+        </div>
       </div>
     </article>
   );
