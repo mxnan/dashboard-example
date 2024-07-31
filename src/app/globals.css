@@ -10,6 +10,9 @@
 }
 
 @layer utilities {
+  .border-custom {
+    @apply  border-stone-200 dark:border-stone-800;
+  }
   .fixed-nav {
     backdrop-filter: saturate(200%) blur(20px);
     transition: background-color 0.1 ease-in-out;
@@ -20,5 +23,3 @@
     justify-content: center;
   }
 }
-
-
