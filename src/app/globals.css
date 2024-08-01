@@ -11,7 +11,7 @@
 
 @layer utilities {
   .border-custom {
-    @apply  border-stone-200 dark:border-stone-800;
+    @apply border-stone-200 dark:border-stone-800;
   }
   .fixed-nav {
     backdrop-filter: saturate(200%) blur(20px);
@@ -21,5 +21,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .custom-underline {
+    @apply hover:bg-[url('/assets/custom-underline.svg')] dark:hover:bg-[url('/assets/custom-underline-dark.svg')];
   }
 }

@@ -1,7 +1,10 @@
 import { cn } from "@/lib/utils";
 import React from "react";
+import CopyButton from "./copy-button";
+import { Terminal } from "lucide-react";
 
 export const mdxComponents = {
+  // custom h1 , h2
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -32,4 +35,66 @@ export const mdxComponents = {
       />
     );
   },
+  //custom a tag
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => {
+    return (
+      <a
+        className={cn(
+          "font-bold text-stone-600 text-base dark:text-stone-500 py-3 px-1 custom-underline",
+          className
+        )}
+        {...props}
+      />
+    );
+  },
+  // custom code block
+  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
+    return (
+      <pre
+        className={cn(
+          "my-4 overflow-x-auto rounded-lg bg-custom p-6",
+          className
+        )}
+        {...props}
+      />
+    );
+  },
+  code: ({ node, className, children, ...props }: any) => {
+    const match = /language-(\w+)/.exec(className || "");
+    if (match?.length) {
+      let Icon = Terminal;
+      const id = (Math.floor(Math.random() * 100) + 1).toString();
+      return (
+        <div
+          className="bg-zinc-100 dark:bg-stone-900
+         border border-custom rounded-lg"
+        >
+          <div className="px-4 py-3 border-b border-custom flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Icon className="h-5 w-5" />
+              <span>
+                {
+                  //@ts-ignore
+                  node?.data?.meta
+                }
+              </span>
+            </div>
+            <CopyButton id={id} />
+          </div>
+          <div className="overflow-x-auto w-full p-4">
+            <code className="text-sm" id={id}>
+              {children}
+            </code>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <code className="text-lightmode dark:text-darkmode" {...props}>
+          {children}
+        </code>
+      );
+    }
+  },
+  //
 };

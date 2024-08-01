@@ -10,7 +10,7 @@ interface MDXContentProps {
 
 export default function MDXContent({ source }: MDXContentProps) {
   const components = useMDXComponents({
-    ...mdxComponents
+    ...mdxComponents,
   });
 
   return <MDXRemote {...source} components={components} />;

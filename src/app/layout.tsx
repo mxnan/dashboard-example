@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 import { Navbar } from "@/components/navbar";
+import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 
 export const fontSans = FontSans({
@@ -22,11 +24,13 @@ export default function RootLayout({
       <body className="relative w-full ">
         <Providers>
           <Navbar />
-          <div className="max-w-[1686px] mx-auto container">
-            <main className="w-full flexcenter pt-24">
+          <div className="overflow-hidden mx-auto container">
+            <main className="w-full  pt-24">
               {children}
             </main>
           </div>
+          <Footer />
+          <Toaster />
         </Providers>
       </body>
     </html>

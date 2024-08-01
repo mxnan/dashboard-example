@@ -31,7 +31,7 @@ export function TableOfContents({ toc }: TocProps) {
       .filter(Boolean);
 
     const observer = new IntersectionObserver(handleObserver, {
-      rootMargin: "-10% 0% -30% 0%",
+      rootMargin: "-30% 0% -30% 0%",
       threshold: 0.5,
     });
 
@@ -41,9 +41,9 @@ export function TableOfContents({ toc }: TocProps) {
   }, [toc, handleObserver]);
 
   return (
-    <nav className="space-y-4">
+    <nav className="space-y-4 flex flex-col items-end">
       <p className="font-medium text-lg">Table of contents</p>
-      <ul className="space-y-6 text-sm font-normal">
+      <ul className="space-y-4 mr-4 text-sm font-normal">
         {toc.map((item) => (
           <TableOfContentsItem
             key={item.slug}

@@ -6,6 +6,8 @@ export default async function BlogLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className="w-full min-h-screen relative flex py-6">{children}</section>
+    <section className="w-full min-h-screen relative flex-1 py-6">
+      {children}
+    </section>
   );
 }
