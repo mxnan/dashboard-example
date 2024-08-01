@@ -1,15 +1,12 @@
 import { getAllBlogs, getBlogBySlug } from "@/lib/blog-api";
-import { serialize } from "next-mdx-remote/serialize";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { CircleArrowLeft } from "lucide-react";
+import MDXContent from "@/components/mdx/components";
 
-const MDXContent = dynamic(() => import("@/components/mdx/mdx-renderer"), {
-  ssr: false,
-});
 const DynamicTableOfContents = dynamic(
   () => import("@/components/mdx/toc").then((mod) => mod.TableOfContents),
   {
@@ -23,8 +20,6 @@ export default async function BlogPost({
   params: { slug: string };
 }) {
   const post = getBlogBySlug(params.slug);
-
-  const mdxSource = await serialize(post.content);
 
   return (
     <article className="flex  justify-center relative min-h-screen">
@@ -74,7 +69,7 @@ export default async function BlogPost({
         </div>
         {/* Mdx Content */}
         <div className="prose-sm max-w-full w-full mx-auto">
-          <MDXContent source={mdxSource} />
+          <MDXContent source={post.content}  />
           <div className="flex justify-center lg:hidden py-4 border-custom border-t">
             <Button variant={"destructive"}>
               <Link href="/blogs" className="flex items-center gap-2">

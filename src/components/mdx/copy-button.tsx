@@ -1,3 +1,4 @@
+"use client";
 import { CopyPlus } from "lucide-react";
 import React from "react";
 
@@ -19,7 +20,7 @@ const CopyButton = ({ id }: { id: string }) => {
       className="hover:scale-105 p-2 rounded-lg
        hover:bg-zinc-300 dark:hover:bg-zinc-900 cursor-pointer "
     >
-     <CopyPlus className="h-5 w-5" />
+      <CopyPlus className="h-5 w-5" />
     </div>
   );
 };
