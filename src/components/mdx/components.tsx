@@ -5,7 +5,7 @@ export const mdxComponents = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        "mt-2 scroll-m-20 text-6xl font-medium tracking-tight",
+        "mt-2 scroll-m-20 text-5xl  sm:text-6xl lg:text-8xl font-medium tracking-tight",
         className
       )}
       {...props}
@@ -25,7 +25,7 @@ export const mdxComponents = {
       <h2
         id={id}
         className={cn(
-          "mt-10 scroll-m-20 border-b pb-2 text-3xl uppercase font-semibold tracking-tight first:mt-0",
+          "mt-10 scroll-m-20 pb-2 pr-4 border-b border-custom text-3xl lg:text-4xl capitalize font-semibold w-max first:mt-0",
           className
         )}
         {...props}

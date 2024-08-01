@@ -34,7 +34,7 @@ export default async function BlogPost({
       </div>
       {/* Content */}
       <div className="space-y-12 w-full flex-1">
-        <div className="flex lg:px-4 py-2 justify-between">
+        <div className="flex lg:px-4 py-2 pb-6 justify-between border-b border-custom">
           <div className="space-y-4 pr-2">
             <h1 className="text-4xl">{post.title}</h1>
             <p className="text-xl">{post.description}</p>
@@ -60,7 +60,7 @@ export default async function BlogPost({
           </div>
         </div>
         {/* Mdx Content */}
-        <div className="prose-sm py-2">
+        <div className="prose-sm">
           <MDXContent source={mdxSource} />
           <div className="flexcenter md:hidden py-4 border-custom border-t">
             <Button variant={"destructive"}>
