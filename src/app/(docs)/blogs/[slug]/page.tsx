@@ -25,15 +25,15 @@ export default async function BlogPost({
     <article className="flex  justify-center relative min-h-screen">
       {/* Back button */}
       <div className="w-[100px] hidden xl:block fixed top-36 left-8 2xl:left-24 self-start">
-        <Button variant={"destructive"}>
-          <Link href="/blogs" className="flex items-center gap-2">
+        <Link href="/blogs">
+          <Button className="flex items-center gap-2" variant={"destructive"}>
             <CircleArrowLeft className="w-5 h-5" />
             Back
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </div>
       {/* Content */}
-      <div className="w-full max-w-5xl mx-auto space-y-16 px-4 lg:px-8">
+      <div className="w-full max-w-4xl 2xl:max-w-5xl mx-auto space-y-16 px-4 lg:px-8">
         <Button variant={"destructive"} className="lg:hidden mt-4">
           <Link href="/blogs" className="flex items-center gap-2">
             <CircleArrowLeft className="w-5 h-5" />
@@ -81,7 +81,7 @@ export default async function BlogPost({
         </div>
       </div>
       {/* Toc Links */}
-      <div className="w-[250px] hidden xl:block fixed top-44 right-4 2xl:right-24 self-start">
+      <div className="w-max hidden xl:block fixed top-44 right-4 2xl:right-20 self-start">
         <div className="flex-1 space-y-3">
           <DynamicTableOfContents toc={post.toc} />
         </div>

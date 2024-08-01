@@ -38,14 +38,19 @@ export default function MDXContent({ source }: { source: string }) {
           }, [props.id, props.children]);
 
           return (
-            <h2
-              id={id}
-              className={cn(
-                "mt-10 scroll-m-20 pb-2 pr-4 border-b border-custom text-3xl lg:text-4xl capitalize font-semibold w-max first:mt-0",
-                className
-              )}
-              {...props}
-            />
+            <div className="relative w-max group/underline">
+              <span className="absolute bottom-0 rotate-3 group-hover/underline:-rotate-1
+              transition-transform ease-in-out duration-200
+               bg-plight dark:bg-pdark rounded-md h-[6px] w-full" />
+              <h2
+                id={id}
+                className={cn(
+                  "mt-10 scroll-m-20 pb-2 pr-4  font-title uppercase text-3xl lg:text-4xl  font-semibold w-max first:mt-0",
+                  className
+                )}
+                {...props}
+              />
+            </div>
           );
         },
         //custom a tag
@@ -85,13 +90,13 @@ export default function MDXContent({ source }: { source: string }) {
             const id = (Math.floor(Math.random() * 100) + 1).toString();
             return (
               <div
-                className="bg-zinc-100 dark:bg-stone-900
-         border border-custom rounded-lg"
+                className="bg-stone-50 dark:bg-stone-950  border-[1px]
+        border-stone-200 dark:border-stone-800 shadow-md rounded-lg"
               >
-                <div className="px-4 py-3 border-b border-custom flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                <div className="px-4 py-3  flex items-center justify-between">
+                  <div className="flex items-center text-plight dark:text-pdark gap-4">
                     <Icon className="h-5 w-5" />
-                    <span>
+                    <span className="text-sm font-semibold text-plight dark:text-pdark">
                       {
                         //@ts-ignore
                         node?.data?.meta
@@ -100,8 +105,8 @@ export default function MDXContent({ source }: { source: string }) {
                   </div>
                   <CopyButton id={id} />
                 </div>
-                <div className="overflow-x-auto w-full p-4">
-                  <code className="text-sm" id={id}>
+                <div className="overflow-x-auto  w-full p-4">
+                  <code className="text-sm font-body" id={id}>
                     {children}
                   </code>
                 </div>

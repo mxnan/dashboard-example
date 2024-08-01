@@ -41,9 +41,10 @@ export function TableOfContents({ toc }: TocProps) {
   }, [toc, handleObserver]);
 
   return (
-    <nav className="space-y-4 flex flex-col items-end">
-      <p className="font-medium text-lg">Table of contents</p>
-      <ul className="space-y-4 mr-4 text-sm font-normal">
+    <nav className="space-y-4  flex flex-col items-start">
+      <p className="font-bold text-xl font-title 2xl:hidden">TOC</p>
+      <p className="font-bold text-xl font-title max-2xl:hidden">Table of contents</p>
+      <ul className="space-y-4 mr-4 text-sm ">
         {toc.map((item) => (
           <TableOfContentsItem
             key={item.slug}
@@ -78,7 +79,7 @@ function TableOfContentsItem({ item, isActive }: TableOfContentsItemProps) {
           className={cn(
             "transition-all ease-in-out duration-100",
             isActive
-              ? "translate-x-4 font-semibold "
+              ? "translate-x-4 font-semibold text-plight dark:text-pdark "
               : "translate-x-0 translate-y-0"
           )}
         >

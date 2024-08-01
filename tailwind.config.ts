@@ -22,11 +22,14 @@ const config: Config = {
         sm: "500px",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        body: ["var(--font-body)"],
+        title: ["var(--font-title)" ],
       },
       colors: {
         black: "#090A0B",
         white: "#FFFFFF",
+        pdark: "#4895ef",
+        plight: "#560bad",
       },
     },
   },

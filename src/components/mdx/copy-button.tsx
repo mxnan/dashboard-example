@@ -17,8 +17,8 @@ const CopyButton = ({ id }: { id: string }) => {
   return (
     <div
       onClick={handleCopy}
-      className="hover:scale-105 p-2 rounded-lg
-       hover:bg-zinc-300 dark:hover:bg-zinc-900 cursor-pointer "
+      className="hover:scale-105 p-2 rounded-lg text-plight dark:text-pdark
+       hover:bg-stone-200 dark:hover:bg-stone-800 cursor-pointer "
     >
       <CopyPlus className="h-5 w-5" />
     </div>
