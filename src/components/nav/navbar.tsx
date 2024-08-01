@@ -10,7 +10,7 @@ import {
   MenuItem,
 } from "@/components/ui/navbar-menu";
 import { Button } from "@/components/ui/button";
-import MobileNav from "./mobile-nav";
+
 import {
   CircleArrowDownIcon,
   CircleArrowRightIcon,
@@ -18,7 +18,8 @@ import {
   MailCheckIcon,
   TwitterIcon,
 } from "lucide-react";
-import ThemeToggle from "./theme-toggle";
+import ThemeToggle from "../theme-toggle";
+import MobileNav from "./mobile-nav";
 
 export function Navbar() {
   const [isMobile, setIsMobile] = useState<boolean>(false);

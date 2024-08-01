@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import NextLink from "next/link";
 import { useState } from "react";
-import ThemeToggle from "./theme-toggle";
+import ThemeToggle from "../theme-toggle";
 
 const mobileLinks = [
   {

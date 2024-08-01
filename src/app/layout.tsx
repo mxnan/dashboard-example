@@ -3,9 +3,10 @@ import { Outfit as FontSans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
-import { Navbar } from "@/components/navbar";
+
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { Navbar } from "@/components/nav/navbar";
 
 
 export const fontSans = FontSans({

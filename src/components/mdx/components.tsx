@@ -1,7 +1,7 @@
 import React from "react";
 import Markdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/atom-one-dark.min.css";
+import "highlight.js/styles/panda-syntax-light.css";
 import CopyButton from "./copy-button";
 import { Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";

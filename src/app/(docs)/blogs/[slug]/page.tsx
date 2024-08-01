@@ -69,7 +69,7 @@ export default async function BlogPost({
         </div>
         {/* Mdx Content */}
         <div className="prose-sm max-w-full w-full mx-auto">
-          <MDXContent source={post.content}  />
+          <MDXContent source={post.content} />
           <div className="flex justify-center lg:hidden py-4 border-custom border-t">
             <Button variant={"destructive"}>
               <Link href="/blogs" className="flex items-center gap-2">
