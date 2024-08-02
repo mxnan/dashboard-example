@@ -1,8 +1,10 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import NextLink from "next/link";
+import Link from "next/link";
 import { useState } from "react";
-import ThemeToggle from "./theme-toggle";
+import ThemeToggle from "../theme-toggle";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const mobileLinks = [
   {
@@ -30,6 +32,8 @@ interface MobileLinkProps {
 }
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
@@ -66,18 +70,25 @@ const MobileNav = () => {
       flex items-center justify-between py-4 container"
       >
         <ThemeToggle />
-        <div className="relative uppercase font-semibold text-xs ">
-          <div className="flex items-center justify-between gap-2">
-            <NextLink href={mobileLinks[0].link} legacyBehavior>
-              <a className="">{mobileLinks[0].name}</a>
-            </NextLink>
+        <div className="relative uppercase  font-body text-lg ">
+          <div className="flex items-center justify-between gap-4">
+            <Link href={mobileLinks[0].link} legacyBehavior>
+              <a
+                className={cn(
+                  "font-semibold block py-2",
+                  pathname === "/" && "text-plight dark:text-pdark"
+                )}
+              >
+                {mobileLinks[0].name}
+              </a>
+            </Link>
             <button
               className=""
               onClick={toggleMenu}
               aria-label="Toggle Mobile Menu"
             >
               <svg
-                className="h-6 w-6 fill-current "
+                className="h-6 w-6 fill-plight dark:fill-pdark "
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
@@ -103,12 +114,22 @@ const MobileNav = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="absolute top-10 right-0 w-max mx-auto bg-stone-100 dark:bg-stone-900 shadow-md rounded-md p-4"
+                className="absolute top-10 right-0 w-max mx-auto
+                 bg-stone-100 dark:bg-stone-900
+                  border-[1px] border-stone-200 dark:border-stone-800
+                  shadow-md rounded-xl p-4"
               >
                 {mobileLinks.slice(1).map((link: MobileLinkProps) => (
-                  <NextLink key={link.link} href={link.link} legacyBehavior>
-                    <a className="block py-2 ">{link.name}</a>
-                  </NextLink>
+                  <Link key={link.link} href={link.link} legacyBehavior>
+                    <a
+                      className={cn(
+                        "block py-2 font-semibold",
+                        link.link === pathname && "text-plight dark:text-pdark"
+                      )}
+                    >
+                      {link.name}
+                    </a>
+                  </Link>
                 ))}
               </motion.div>
             )}

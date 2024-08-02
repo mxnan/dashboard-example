@@ -39,7 +39,10 @@ const ThemeToggle = () => {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="dark-mode-toggle relative rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+      className="dark-mode-toggle relative rounded-xl w-8 h-8 
+      flex items-center justify-center overflow-hidden
+      hover:bg-stone-100 dark:hover:bg-stone-900
+      "
       onClick={toggleTheme}
     >
       {mounted && (
@@ -51,7 +54,7 @@ const ThemeToggle = () => {
               viewBox="0 0 24 24"
               fill="currentColor"
               stroke="currentColor"
-              className="h-5 w-5 text-violet-600 absolute"
+              className="h-5 w-5 text-plight absolute"
               initial="initial"
               animate="enter"
               exit="exit"
@@ -72,7 +75,7 @@ const ThemeToggle = () => {
               viewBox="0 0 24 24"
               fill="currentColor"
               stroke="currentColor"
-              className="h-5 w-5 text-emerald-600 absolute"
+              className="h-5 w-5 text-pdark absolute"
               initial="initial"
               animate="enter"
               exit="exit"

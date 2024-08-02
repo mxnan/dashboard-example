@@ -46,8 +46,10 @@ export default function BlogHero() {
 
   return (
     <div className="max-w-2xl w-full mx-auto ">
-      <div className="p-2 max-lg:pb-16 max-lg:border-l max-lg:border-r h-full lg:h-[80vh] flex-1 flex-col flex items-center gap-10">
-        <div className="space-y-6 text-center pb-3 border-b">
+      <div className="p-2 max-lg:pb-16 
+       h-full lg:h-[80vh]
+        flex-1 flex-col flex items-center gap-10">
+        <div className="space-y-6 text-center pb-3 border-stone-200 dark:border-stone-800  border-b">
           <p>Manan Negi</p>
           <h1 className="text-3xl">Self taught Web dev. </h1>
           <p>Learnt C in school</p>

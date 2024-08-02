@@ -1,16 +1,34 @@
-
-import { Outfit as FontSans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
-import { Navbar } from "@/components/navbar";
+import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
+import { Navbar } from "@/components/nav/navbar";
+import { cn } from "@/lib/utils";
 
+import { Anybody, Cuprum } from "next/font/google";
+import { Metadata } from "next";
 
-export const fontSans = FontSans({
+//fonts
+export const bodyFont = Anybody({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-body",
 });
+export const titleFont = Cuprum({
+  subsets: ["latin"],
+  variable: "--font-title",
+});
+//fonts
 
+//metadata
+export const metadata: Metadata = {
+  metadataBase: new URL("https://syntaxui.com"),
+  title: {
+    template: "%s || mxnan",
+    default: "mxnan.com",
+  },
+  description: `Personal website, creating components and some blogs . `,
+};
 
 export default function RootLayout({
   children,
@@ -18,15 +36,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={fontSans.variable} suppressHydrationWarning>
-      <body className="relative w-full ">
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "relative w-full font-body",
+          bodyFont.variable,
+          titleFont.variable
+        )}
+      >
         <Providers>
           <Navbar />
-          <div className="max-w-[1686px] mx-auto container">
-            <main className="w-full flexcenter pt-24">
-              {children}
-            </main>
+          <div className="overflow-hidden mx-auto container">
+            <main className="w-full pt-24">{children}</main>
           </div>
+          <Footer />
+          <Toaster />
         </Providers>
       </body>
     </html>

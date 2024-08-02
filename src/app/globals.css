@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  
   @apply bg-white text-black;
 }
 .dark {
@@ -10,6 +11,9 @@
 }
 
 @layer utilities {
+  .border-custom {
+    @apply border-plight dark:border-pdark;
+  }
   .fixed-nav {
     backdrop-filter: saturate(200%) blur(20px);
     transition: background-color 0.1 ease-in-out;
@@ -19,6 +23,7 @@
     align-items: center;
     justify-content: center;
   }
+  .custom-underline {
+    @apply hover:bg-[url('/assets/custom-underline.svg')] dark:hover:bg-[url('/assets/custom-underline-dark.svg')];
+  }
 }
-
-
