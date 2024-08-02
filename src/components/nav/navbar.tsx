@@ -87,10 +87,8 @@ function DesktopNav({ className }: { className?: string }) {
         restDelta: 0.001,
       }}
       className={cn(
-        "w-full fixed-nav fixed top-0  max-sm:py-6 inset-x-0   ",
-        isHidden
-          ? "border-b-[5px] border-custom  "
-          : "border-b-[1px] border-custom ",
+        "w-full fixed-nav fixed top-0  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
+        isHidden ? "border-b-[5px]   " : "border-b-[1px]  ",
         className
       )}
     >
@@ -100,57 +98,25 @@ function DesktopNav({ className }: { className?: string }) {
         </Link>
 
         <Menu setActive={setActive}>
-          {/* Components */}
-          <MenuItem setActive={setActive} active={active} item="components">
-            <div className="relative flex max-xl:flex-col gap-4">
-              <ContentCard
-                title="How a multi-billion dollar manufacturer boosted sales volume with Industrial AI."
-                href="/content/content1.webp"
-                src="/og.jpg"
-                description="Industrial AI built a custom automated quoting solution using Generative AI integrated with ERP and CRM systems."
-              />
-              <ContentCard
-                title="How a multi-billion dollar manufacturer boosted sales volume with Industrial AI."
-                href="/content/content1.webp"
-                src="/og.jpg"
-                description="Industrial AI built a custom automated quoting solution using Generative AI integrated with ERP and CRM systems."
-              />
-            </div>
-          </MenuItem>
           {/*Blogs*/}
           <MenuItem setActive={setActive} active={active} item="blogs">
-            <div className="relative flex max-xl:flex-col gap-4">
+            <div className="flex flex-col space-y-4 md:space-y-6">
               <ContentCard
-                title="How a multi-billion dollar manufacturer boosted sales volume with Industrial AI."
-                href="/blogs"
+                title="emailjs"
+                href="/blogs/test.mdx"
                 src="/og.jpg"
-                description="Industrial AI built a custom automated quoting solution using Generative AI integrated with ERP and CRM systems."
+                description="implement emailjs on your app using hooks and shadcn form"
               />
               <ContentCard
-                title="How a multi-billion dollar manufacturer boosted sales volume with Industrial AI."
-                href="/blogs/2"
+                title="test"
+                href="/blogs/test2.mdx"
                 src="/og.jpg"
-                description="Industrial AI built a custom automated quoting solution using Generative AI integrated with ERP and CRM systems."
+                description="test test test"
               />
             </div>
           </MenuItem>
-          {/*Security*/}
-          <MenuItem
-            setActive={setActive}
-            active={active}
-            icon={<CircleArrowDownIcon className="h-5 w-5" />}
-            item="/blog"
-          >
-            <Button
-              variant={"ghost"}
-              size={"lg"}
-              className="flex font-semibold items-center gap-3 group/button"
-            >
-              <Link href={"/security"}>Security</Link>
-              <CircleArrowRightIcon className="w-5 h-5 group-hover/button:rotate-[25deg] transition-transform ease-in-out duration-200" />
-            </Button>
-          </MenuItem>
-          {/*Company*/}
+
+          {/*Contact*/}
           <MenuItem setActive={setActive} active={active} item="contact">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/hobby">

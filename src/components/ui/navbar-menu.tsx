@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const transition = {
   type: "tween",
@@ -118,27 +119,35 @@ export const ContentCard = ({
   href: string;
   src: string;
 }) => {
+  const pathname = usePathname();
   return (
     <Link
       href={href}
-      className="flex flex-col gap-3 max-w-[420px] " // Fixed width of 300px
+      className="flex flex-row items-center space-x-4  p-4 rounded-xl group/card "
     >
-      <div
-        className="w-full aspect-video relative overflow-hidden
-       rounded-xl hover:scale-90 transition-transform ease-in-out duration-500"
-      >
+      <div className="flex-1 space-y-2 pr-2">
+        <h4
+          className={cn(
+            "text-lg  uppercase font-bold",
+            pathname === href && "text-plight dark:text-pdark"
+          )}
+        >
+          {title}
+        </h4>
+        <p className="text-base  capitalize font-light group-hover/card:translate-y-2 group-hover/card:translate-x-1 transition-transform ease-in-out duration-500">
+          {description}
+        </p>
+      </div>
+      <div className="relative w-36 h-24 group-hover/card:translate-x-2 transition-transform ease-in-out duration-500  flex-shrink-0">
         <Image
           src={src}
           alt={title}
           fill
           priority
           style={{ objectFit: "cover" }}
-          sizes="300px"
+          className="rounded-lg "
+          sizes="(max-width: 768px) 128px, 128px"
         />
-      </div>
-      <div className="w-full space-y-2 pl-5">
-        <h4 className="text-sm font-medium">{title}</h4>
-        <p className="text-xs font-light">{description}</p>
       </div>
     </Link>
   );
@@ -148,7 +157,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="flexcenter pb-2 border-b capitalize gap-4  text-stone-700 dark:text-stone-300 hover:text-stone-500 dark:hover:text-stone-400"
+      className="flex items-center justify-between pb-2 border-b capitalize gap-4  text-stone-700 dark:text-stone-300 hover:text-stone-500 dark:hover:text-stone-400"
     >
       {children}
     </Link>

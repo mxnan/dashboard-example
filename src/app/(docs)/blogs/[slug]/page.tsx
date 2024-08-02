@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { CircleArrowLeft } from "lucide-react";
 import MDXContent from "@/components/mdx/components";
+import { getFormattedDate } from "@/lib/utils";
 
 const DynamicTableOfContents = dynamic(
   () => import("@/components/mdx/toc").then((mod) => mod.TableOfContents),
@@ -44,7 +45,7 @@ export default async function BlogPost({
           <div className="space-y-4 pr-2 md:w-2/3">
             <h1 className="text-3xl md:text-4xl">{post.title}</h1>
             <p className="text-lg md:text-xl">{post.description}</p>
-            <p className="text-sm">{post.date}</p>
+            <p className="text-sm">{getFormattedDate(post.date)}</p>
             <div className="flex flex-wrap">
               {post.tags.map((tag) => (
                 <span
