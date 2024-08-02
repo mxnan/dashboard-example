@@ -120,6 +120,7 @@ export const ContentCard = ({
   src: string;
 }) => {
   const pathname = usePathname();
+  
   return (
     <Link
       href={href}
@@ -129,7 +130,7 @@ export const ContentCard = ({
         <h4
           className={cn(
             "text-lg  uppercase font-bold",
-            pathname === href && "text-plight dark:text-pdark"
+            pathname == href && "text-plight dark:text-pdark"
           )}
         >
           {title}

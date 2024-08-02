@@ -25,7 +25,7 @@ export function BlogCard({ post }: BlogCardProps) {
               <span
                 key={tag}
                 className="inline-block rounded-2xl px-2 py-1 m-1 text-xs font-semibold
-                transition-all ease-in-out duration-500
+                transition-all ease-in-out duration-500 group-hover/card:scale-105
                   text-plight dark:text-pdark 
                   group-hover/card:bg-gray-200/60 group-hover/card:dark:bg-stone-900
                "

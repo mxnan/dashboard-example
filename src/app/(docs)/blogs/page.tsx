@@ -1,14 +1,19 @@
 import { BlogCard } from "@/components/blog-card";
 import BlogHero from "@/components/blog-hero";
 import { getAllBlogs } from "@/lib/blog-api";
-
 import React from "react";
+
+//metadata
+export const metadata = {
+  title: "Blogs",
+  description: "writing blogs here sometimes, not good at  writing",
+};
 
 export default function page() {
   const blogs = getAllBlogs();
 
   return (
-    <div className="max-w-[1536px] w-full mx-auto min-h-screen flex-1 lg:flex max-lg:space-y-32 ">
+    <section className="max-w-[1536px] w-full mx-auto min-h-screen flex-1 lg:flex max-lg:space-y-32 ">
       {/* BlogCards section */}
       <section className="flex-1 h-max flex flex-col gap-8">
         <div className="space-y-5 lg:ml-12">
@@ -33,6 +38,6 @@ export default function page() {
       <section className="flex-1 ">
         <BlogHero />
       </section>
-    </div>
+    </section>
   );
 }

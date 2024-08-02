@@ -8,12 +8,22 @@ import { CircleArrowLeft } from "lucide-react";
 import MDXContent from "@/components/mdx/components";
 import { getFormattedDate } from "@/lib/utils";
 
+//toc has to be dynamic import
 const DynamicTableOfContents = dynamic(
   () => import("@/components/mdx/toc").then((mod) => mod.TableOfContents),
   {
     ssr: false,
   }
 );
+
+//metadata
+export const generateMetadata = ({ params }: { params: { slug: string } }) => {
+  const post = getBlogBySlug(params.slug);
+  return {
+    title: post.title,
+    description: post.description,
+  };
+};
 
 export default async function BlogPost({
   params,
@@ -23,7 +33,7 @@ export default async function BlogPost({
   const post = getBlogBySlug(params.slug);
 
   return (
-    <article className="flex  justify-center relative min-h-screen">
+    <section className="flex  justify-center relative min-h-screen">
       {/* Back button */}
       <div className="w-[100px] hidden xl:block fixed top-36 left-8 2xl:left-24 self-start">
         <Link href="/blogs">
@@ -69,7 +79,7 @@ export default async function BlogPost({
           </div>
         </div>
         {/* Mdx Content */}
-        <div className="prose-sm max-w-full w-full mx-auto">
+        <article className="prose-sm max-w-full w-full mx-auto">
           <MDXContent source={post.content} />
           <div className="flex justify-center lg:hidden py-4 border-custom border-t">
             <Button variant={"destructive"}>
@@ -79,7 +89,7 @@ export default async function BlogPost({
               </Link>
             </Button>
           </div>
-        </div>
+        </article>
       </div>
       {/* Toc Links */}
       <div className="w-max hidden xl:block fixed top-44 right-4 2xl:right-20 self-start">
@@ -87,7 +97,7 @@ export default async function BlogPost({
           <DynamicTableOfContents toc={post.toc} />
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 

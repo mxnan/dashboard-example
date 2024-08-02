@@ -81,7 +81,7 @@ function DesktopNav({ className }: { className?: string }) {
       }}
       transition={{
         duration: 0.2,
-        type: "spring",
+        type: " tween",
         damping: 30,
         stiffness: 120,
         restDelta: 0.001,
@@ -103,13 +103,13 @@ function DesktopNav({ className }: { className?: string }) {
             <div className="flex flex-col space-y-4 md:space-y-6">
               <ContentCard
                 title="emailjs"
-                href="/blogs/test.mdx"
+                href="/blogs/test"
                 src="/og.jpg"
                 description="implement emailjs on your app using hooks and shadcn form"
               />
               <ContentCard
                 title="test"
-                href="/blogs/test2.mdx"
+                href="/blogs/test2"
                 src="/og.jpg"
                 description="test test test"
               />
