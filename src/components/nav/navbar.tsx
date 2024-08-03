@@ -98,6 +98,24 @@ function DesktopNav({ className }: { className?: string }) {
         </Link>
 
         <Menu setActive={setActive}>
+          {/*Components*/}
+          <MenuItem setActive={setActive} active={active} item="Components">
+            <div className="flex flex-col space-y-4 md:space-y-6">
+              <ContentCard
+                title="Shimmer Button"
+                href="/components/buttons/shimmer"
+                src="/og.jpg"
+                description="shimmer button"
+              />
+                 <ContentCard
+                title="Bounce Loader"
+                href="/components/loaders/bounce"
+                src="/og.jpg"
+                description="bounce loader"
+              />
+           
+            </div>
+          </MenuItem>
           {/*Blogs*/}
           <MenuItem setActive={setActive} active={active} item="blogs">
             <div className="flex flex-col space-y-4 md:space-y-6">

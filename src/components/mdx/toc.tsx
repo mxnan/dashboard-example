@@ -41,7 +41,7 @@ export function TableOfContents({ toc }: TocProps) {
   }, [toc, handleObserver]);
 
   return (
-    <nav className="space-y-4  flex flex-col items-start">
+    <nav className="space-y-4 flex flex-col items-start">
       <p className="font-bold text-xl font-title 2xl:hidden">TOC</p>
       <p className="font-bold text-xl font-title max-2xl:hidden">Table of contents</p>
       <ul className="space-y-4 mr-4 text-sm ">
