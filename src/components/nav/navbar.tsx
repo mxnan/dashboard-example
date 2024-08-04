@@ -9,17 +9,16 @@ import {
   Menu,
   MenuItem,
 } from "@/components/ui/navbar-menu";
-import { Button } from "@/components/ui/button";
-
 import {
-  CircleArrowDownIcon,
-  CircleArrowRightIcon,
+  ArrowDown10Icon,
   GitBranchPlus,
   MailCheckIcon,
   TwitterIcon,
 } from "lucide-react";
 import ThemeToggle from "../theme-toggle";
 import MobileNav from "./mobile-nav";
+import { usePathname } from "next/navigation";
+import { BorderBeam } from "../magicui/border-beam";
 
 export function Navbar() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -40,13 +39,15 @@ export function Navbar() {
   }, []);
   // useEffect for window resize
   return (
-    <header className="relative w-full z-50 bg-white dark:bg-black ">
+    <header className="relative w-full z-50 bg-stone-50 dark:bg-stone-950 ">
       {isMobile ? <MobileNav /> : <DesktopNav />}
     </header>
   );
 }
 function DesktopNav({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+
+  const pathname = usePathname();
 
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
@@ -81,22 +82,26 @@ function DesktopNav({ className }: { className?: string }) {
       }}
       transition={{
         duration: 0.2,
-        type: " tween",
+        type: "tween",
         damping: 30,
         stiffness: 120,
         restDelta: 0.001,
       }}
       className={cn(
-        "w-full fixed-nav fixed top-0  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
+        "w-full fixed-nav  fixed -top-1  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
         isHidden ? "border-b-[5px]   " : "border-b-[1px]  ",
         className
       )}
     >
-      <div className="px-[1.5rem] max-w-[1686px] mx-auto flex items-center justify-between">
+      <BorderBeam />
+      <div className="relative mt-2 px-[1.5rem] max-w-[1686px] mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          mxnan.com
+          {pathname === "/" ? (
+            <ArrowDown10Icon className="w-5 h-5" />
+          ) : (
+            <p>mxnan.com</p>
+          )}
         </Link>
-
         <Menu setActive={setActive}>
           {/*Components*/}
           <MenuItem setActive={setActive} active={active} item="Components">
@@ -105,15 +110,14 @@ function DesktopNav({ className }: { className?: string }) {
                 title="Shimmer Button"
                 href="/components/buttons/shimmer"
                 src="/og.jpg"
-                description="shimmer button"
+                
               />
-                 <ContentCard
+              <ContentCard
                 title="Bounce Loader"
                 href="/components/loaders/bounce"
                 src="/og.jpg"
-                description="bounce loader"
+             
               />
-           
             </div>
           </MenuItem>
           {/*Blogs*/}
@@ -123,7 +127,7 @@ function DesktopNav({ className }: { className?: string }) {
                 title="emailjs"
                 href="/blogs/test"
                 src="/og.jpg"
-                description="implement emailjs on your app using hooks and shadcn form"
+                description="implement emailjs on your app using hooks and shadcn form to recieve emails to sned jasdb dsanbjhd jhshbdsa hsd"
               />
               <ContentCard
                 title="test"
@@ -150,7 +154,6 @@ function DesktopNav({ className }: { className?: string }) {
             </div>
           </MenuItem>
         </Menu>
-
         <ThemeToggle />
       </div>
     </motion.div>

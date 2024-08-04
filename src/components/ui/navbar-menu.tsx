@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { BorderBeam } from "../magicui/border-beam";
 
 const transition = {
   type: "tween",
@@ -15,21 +16,22 @@ const transition = {
   restSpeed: 0.001,
 };
 
+// menu items and their popup div
 export const MenuItem = ({
   setActive,
   active,
   item,
-  icon,
   children,
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
-  icon?: React.ReactNode;
   children?: React.ReactNode;
 }) => {
-  // Create an absolute path
+  const pathname = usePathname();
   const href = item.startsWith("/") ? item : `/${item.toLowerCase()}`;
+  const isSelected = pathname === href;
+
   return (
     <div
       onClick={() => setActive(item)}
@@ -40,27 +42,19 @@ export const MenuItem = ({
         <motion.p
           transition={{ duration: 0.3 }}
           className={cn(
-            "relative capitalize cursor-pointer h-16 text-center py-5 px-5 font-normal max-md:px-3 lg:px-7 text-sm md:text-base",
+            "relative capitalize cursor-pointer tracking-wide h-16 text-center py-5 px-5  max-md:px-3 lg:px-7 text-sm md:text-base",
             active === item &&
-              "text-stone-500  dark:text-stone-400 transition-colors ease-in-out duration-300"
+              "-translate-y-1 transition-transform ease-in-out duration-300"
           )}
         >
-          {!icon ? (
-            <span>{item}</span>
-          ) : (
-            <span
-              className={cn(
-                "inline-block transition-transform ease-in-out duration-300",
-                item === "Our Approach"
-                  ? "group-hover/item:-rotate-[25deg]"
-                  : item === "Security"
-                  ? "group-hover/item:rotate-[25deg]"
-                  : "group-hover/item:rotate-0"
-              )}
-            >
-              {icon}
-            </span>
-          )}
+          <span
+            className={cn(
+              "transition-all ease-in-out duration-300",
+              isSelected && "font-bold text-stone-600 dark:text-stone-500 "
+            )}
+          >
+            {item}
+          </span>
         </motion.p>
       </Link>
       {active !== null && (
@@ -70,16 +64,13 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div className="absolute top-[60px] left-1/2 sm:-translate-x-1/3 lg:-translate-x-1/2">
+            <div className="absolute top-[62px] left-1/2 w-min -translate-x-1/2">
               <motion.div
                 transition={transition}
-                layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                layoutId="active"
+                className="bg-stone-50 dark:bg-stone-950 backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
               >
-                <motion.div
-                  layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
-                >
+                <motion.div layout className="relative w-max h-full p-4">
                   {children}
                 </motion.div>
               </motion.div>
@@ -91,6 +82,7 @@ export const MenuItem = ({
   );
 };
 
+//main menu container
 export const Menu = ({
   setActive,
   children,
@@ -108,6 +100,7 @@ export const Menu = ({
   );
 };
 
+//card for displaying blogs and components
 export const ContentCard = ({
   title,
   description,
@@ -115,27 +108,27 @@ export const ContentCard = ({
   src,
 }: {
   title: string;
-  description: string;
+  description?: string;
   href: string;
   src: string;
 }) => {
   const pathname = usePathname();
-  
+
   return (
     <Link
       href={href}
-      className="flex flex-row items-center space-x-4  p-4 rounded-xl group/card "
+      className="flex flex-row items-center space-x-4 p-2 rounded-xl group/card "
     >
       <div className="flex-1 space-y-2 pr-2">
         <h4
           className={cn(
-            "text-lg  uppercase font-bold",
+            "text-sm uppercase font-semibold",
             pathname == href && "text-plight dark:text-pdark"
           )}
         >
           {title}
         </h4>
-        <p className="text-base  capitalize font-light group-hover/card:translate-y-2 group-hover/card:translate-x-1 transition-transform ease-in-out duration-500">
+        <p className="text-sm max-w-xs capitalize font-light group-hover/card:translate-y-2 group-hover/card:translate-x-1 transition-transform ease-in-out duration-500">
           {description}
         </p>
       </div>
@@ -154,6 +147,7 @@ export const ContentCard = ({
   );
 };
 
+//hovered link
 export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link

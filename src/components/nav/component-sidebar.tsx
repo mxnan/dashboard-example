@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { ArrowDownCircle } from "lucide-react";
+import { BorderBeam } from "../magicui/border-beam";
 
 const sidebarItems: {
   category: string;
@@ -49,13 +49,13 @@ export default function ComponentSidebar() {
 export const DesktopSidebar = () => {
   const pathname = usePathname();
   return (
-    <nav className="h-full overflow-y-auto">
+    <nav className="h-full relative overflow-x-hidden overflow-y-auto">
       <div className="sticky top-0 p-4">
         <h2 className="text-xl font-bold mb-4">Components</h2>
         <Link
           href="/components"
           className={cn(
-            "flex justify-between w-full mb-4 hover:translate-x-2 transition-transform ease-in-out duration-300",
+            "flex justify-between w-full mb-2 hover:translate-x-2 transition-transform ease-in-out duration-300",
             {
               "text-plight dark:text-pdark font-semibold translate-x-2 transition-transform ease-in-out duration-300":
                 pathname === "/components",
@@ -64,6 +64,19 @@ export const DesktopSidebar = () => {
           )}
         >
           <p className="custom-underline w-min pb-2">Introduction</p>
+        </Link>
+        <Link
+          href="/components/playground"
+          className={cn(
+            "flex justify-between w-full mb-4 hover:translate-x-2 transition-transform ease-in-out duration-300",
+            {
+              "text-plight dark:text-pdark font-semibold translate-x-2 transition-transform ease-in-out duration-300":
+                pathname === "/components/playground",
+              "text-gray-500": pathname !== "/components/playground",
+            }
+          )}
+        >
+          <p className="custom-underline w-min pb-2">Playground</p>
         </Link>
         {sidebarItems.map((category) => (
           <div key={category.category} className="mb-4">
@@ -77,7 +90,7 @@ export const DesktopSidebar = () => {
                   <Link
                     href={item.href}
                     className={cn("custom-underline w-max pb-2 ", {
-                      "text-plight dark:text-pdark font-semibold ":
+                      "text-plight dark:text-pdark font-semibold translate-x-2 ":
                         pathname === item.href,
                       "text-gray-500": pathname !== item.href,
                     })}
