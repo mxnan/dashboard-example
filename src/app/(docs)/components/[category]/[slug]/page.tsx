@@ -34,7 +34,7 @@ export default function ComponentPage({
             ))}
           </div>
         </div>
-        <div className="max-w-3xl w-full px-2  prose-sm">
+        <div className="max-w-3xl w-full md:px-2 prose-sm">
           <MDXContent source={component.content} />
         </div>
       </div>

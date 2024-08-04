@@ -63,8 +63,7 @@ export const DesktopSidebar = () => {
             }
           )}
         >
-          <p className="custom-underline w-min pb-2">Introduction</p>{" "}
-          <ArrowDownCircle className="w-5 h-5" />
+          <p className="custom-underline w-min pb-2">Introduction</p>
         </Link>
         {sidebarItems.map((category) => (
           <div key={category.category} className="mb-4">
@@ -99,30 +98,38 @@ export const MobileSidebar = () => {
   const pathname = usePathname();
   return (
     <nav className="h-full overflow-y-auto">
-      <div className="sticky top-0 p-4">
+      <div className="sticky top-0 p-2">
         <h2 className="text-base font-bold mb-4">Components</h2>
         <Link
           href="/components"
-          className={cn("hover:underline text-sm block mb-4", {
-            "text-blue-600 font-semibold": pathname === "/components",
-            "text-gray-600": pathname !== "/components",
-          })}
+          className={cn(
+            "flex justify-between w-full mb-4 hover:translate-x-2 transition-transform ease-in-out duration-300",
+            {
+              "text-plight dark:text-pdark font-semibold translate-x-2 transition-transform ease-in-out duration-300":
+                pathname === "/components",
+              "text-gray-500": pathname !== "/components",
+            }
+          )}
         >
-          Introduction
+          <p className="custom-underline text-sm w-min pb-2">Introduction</p>
         </Link>
         {sidebarItems.map((category) => (
           <div key={category.category} className="mb-4">
-            <h3 className="text-lg text-stone-700 dark:text-stone-300 font-semibold mb-2">
+            <h3 className="text-base font-semibold mb-2">
               {category.category}
             </h3>
-            <ul className="ml-2">
+            <ul className="space-y-2 ">
               {category.items.map((item) => (
-                <li key={item.name} className="mb-1">
+                <li
+                  key={item.name}
+                  className="mb-1 hover:translate-x-2 transition-transform ease-in-out duration-300"
+                >
                   <Link
                     href={item.href}
-                    className={cn("hover:underline text-sm", {
-                      "text-blue-600 font-semibold": pathname === item.href,
-                      "text-gray-600": pathname !== item.href,
+                    className={cn("custom-underline text-sm w-max pb-2 ", {
+                      "text-plight dark:text-pdark font-semibold ":
+                        pathname === item.href,
+                      "text-gray-500": pathname !== item.href,
                     })}
                   >
                     {item.name}

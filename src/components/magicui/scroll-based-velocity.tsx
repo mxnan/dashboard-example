@@ -14,7 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 
 interface VelocityScrollProps {
-  text: string;
+  text: string | any;
   default_velocity?: number;
   className?: string;
 }

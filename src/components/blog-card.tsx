@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-api";
 import { getFormattedDate } from "@/lib/utils";
+import { BorderBeam } from "./magicui/border-beam";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -8,7 +9,8 @@ interface BlogCardProps {
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
-    <div className="w-full max-w-sm border-stone-200 dark:border-stone-800 border h-auto shadow-xl rounded-lg overflow-hidden">
+    <div className="w-full relative max-w-sm border-stone-200 dark:border-stone-800 border h-auto shadow-xl rounded-lg overflow-hidden">
+       <BorderBeam />
       <Link href={`/blogs/${post.slug}`} className="block h-full group/card">
         <div className="p-4 flex flex-col h-full">
           <h2 className="text-xl font-bold  mb-2 line-clamp-2">{post.title}</h2>

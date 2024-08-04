@@ -18,12 +18,24 @@ const config: Config = {
       },
     },
     extend: {
+      //for border-beam animations
+      animation: {
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+      },
+      keyframes: {
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
+      },
+      //for border-beam animations
       screens: {
         sm: "500px",
       },
       fontFamily: {
         body: ["var(--font-body)"],
-        title: ["var(--font-title)" ],
+        title: ["var(--font-title)"],
       },
       colors: {
         black: "#090A0B",

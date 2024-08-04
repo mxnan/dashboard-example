@@ -1,5 +1,4 @@
 import { getAllBlogs, getBlogBySlug } from "@/lib/blog-api";
-
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -35,7 +34,7 @@ export default async function BlogPost({
   return (
     <section className="flex  justify-center relative min-h-screen">
       {/* Back button */}
-      <div className="w-[100px] hidden xl:block fixed top-36 left-8 2xl:left-24 self-start">
+      <div className="w-[100px] hidden xl:block fixed top-44 left-12 2xl:left-32 self-start">
         <Link href="/blogs">
           <Button className="flex items-center gap-2" variant={"destructive"}>
             <CircleArrowLeft className="w-5 h-5" />
@@ -81,7 +80,7 @@ export default async function BlogPost({
         {/* Mdx Content */}
         <article className="prose-sm max-w-full w-full mx-auto">
           <MDXContent source={post.content} />
-          <div className="flex justify-center lg:hidden py-4 border-custom border-t">
+          <div className="flex justify-start pt-12 mb-12 lg:hidden py-4 border-custom border-t">
             <Button variant={"destructive"}>
               <Link href="/blogs" className="flex items-center gap-2">
                 <CircleArrowLeft className="w-5 h-5" />
