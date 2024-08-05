@@ -3,10 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
-
-// Dynamic import with SSR disabled for Globe component
-const Globe = dynamic(() => import("./magicui/globe"), { ssr: false });
-// Adjust the import path as needed
+import Particles from "./magicui/particles";
+import { useTheme } from "next-themes";
+import Globe from "./magicui/globe";
 
 const animationOrder = {
   step0: 0,
@@ -47,7 +46,7 @@ const StickyGlobeScroll = () => {
       animationOrder.step75,
       animationOrder.step100,
     ],
-    [1, 0.7, 0.8, 0.9, 0.3]
+    [1, 0.8, 0.8, 0.5, 0.1]
   );
   const y = useTransform(
     scrollYProgress,
@@ -104,7 +103,7 @@ const StickyGlobeScroll = () => {
       animationOrder.step90,
       animationOrder.step100,
     ],
-    [0.2, 0.4, 0.9, 1, 0.9, 0.4, 0]
+    [0.2, 0.4, 0.9, 1, 0.7, 0, 0]
   );
 
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -124,21 +123,40 @@ const StickyGlobeScroll = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
   // useEffect for window resize
+
+  // for color in particles
+  const { theme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
+
+  useEffect(() => {
+    setColor(theme === "dark" ? "#FFFFFF" : "#090A0B");
+  }, [theme]);
+
   return (
     <div
-      className={cn(
-        "relative w-full h-full ",
-        isMobile ? "hidden" : "block"
-      )}
+      className={cn("relative w-full h-full ", isMobile ? "hidden" : "block")}
     >
+      <Particles
+        className="absolute inset-0"
+        quantity={300}
+        ease={150}
+        staticity={30}
+        vx={0}
+        vy={0.3}
+        size={7}
+        color={color}
+        refresh
+      />
+      {/* globe container */}
       <div ref={targetRef} className="h-[300vh] w-full relative">
+        {/* fixed scrollable globe */}
         <motion.div
           className="fixed top-32 aspect-[1/1] w-full max-w-[600px] mx-auto "
           style={{ scale, x, y, opacity }}
         >
           <Globe className="absolute inset-0 mx-auto " />
         </motion.div>
-
+        {/* text */}
         <motion.div
           style={{ opacity }}
           className="absolute left-10 top-1/3 text-xl font-semibold"
@@ -147,7 +165,7 @@ const StickyGlobeScroll = () => {
             Global <br /> Connectivity <br /> At Your <br /> Fingertips.
           </p>
         </motion.div>
-
+        {/* text */}
         <motion.div
           style={{ opacity }}
           className="absolute right-10 top-2/3 text-xl font-semibold"

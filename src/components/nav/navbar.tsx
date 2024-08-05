@@ -108,7 +108,7 @@ function DesktopNav({ className }: { className?: string }) {
         <Menu setActive={setActive}>
           {/*Components*/}
           <MenuItem setActive={setActive} active={active} item="Components">
-            <div className="flex flex-col space-y-4 md:space-y-6">
+            <div className="flex flex-col space-y-2 md:space-y-4">
               <ContentCard
                 title="Shimmer Button"
                 href="/components/buttons/shimmer"

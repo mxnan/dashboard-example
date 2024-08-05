@@ -1,11 +1,18 @@
 import StickyGlobeScroll from "@/components/globe-scroll";
+import { ArrowBigDownDash } from "lucide-react";
 
-// Dynamic import with SSR disabled for Globe component
-const Meteors = dynamic(() => import("../../../components/meteor-info"), {
+// Dynamic import with SSR disabled for meteor component
+const Meteorsdynamic = dynamic(
+  () => import("../../../components/meteor-info"),
+  {
+    ssr: false,
+  }
+);
+// Dynamic import with SSR disabled for globe component
+const Globedynamic = dynamic(() => import("../../../components/globe-scroll"), {
   ssr: false,
 });
 
-import { ArrowBigDownDash } from "lucide-react";
 import dynamic from "next/dynamic";
 
 import React from "react";
@@ -14,7 +21,8 @@ export default function page() {
   return (
     <section className="max-w-[1536px] relative w-full mx-auto min-h-screen flex-1 py-16">
       {/* scroll section for 1536 and above*/}
-     {/* <div className="w-full max-2xl:hidden flex flex-col items-end gap-16">
+      {/*{" "}
+      <div className="w-full max-2xl:hidden flex flex-col items-end gap-16">
         <h1 className="text-[100px] leading-[1.4em] font-title ">
           Contact me ?
         </h1>
@@ -33,11 +41,10 @@ export default function page() {
           <ArrowBigDownDash className="w-6 h-6 animate-bounce" />
         </div>
       </div>
-      <StickyGlobeScroll />*/}
+      <Globedynamic />*/}
       {/* scroll section for 1536 and above*/}
-
       {/* for all screens */}
-      <Meteors />
+      <Meteorsdynamic />
     </section>
   );
 }

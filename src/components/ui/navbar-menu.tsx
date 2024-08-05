@@ -6,6 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { BorderBeam } from "../magicui/border-beam";
+import Meteors from "../magicui/meteors";
 
 const transition = {
   type: "tween",
@@ -47,7 +48,7 @@ export const MenuItem = ({
               "-translate-y-1 transition-transform ease-in-out duration-700"
           )}
         >
-          { /* ghost button classes */}
+          {/* ghost button classes */}
           <span
             className={cn(
               "font-title font-medium text-xl px-6 py-2 ml-2 rounded-2xl hover:bg-stone-100 dark:hover:bg-stone-900 transition-all ease-in-out duration-300",
@@ -65,7 +66,7 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div className="absolute top-[80px] left-1/2 w-min -translate-x-1/2">
+            <div className="absolute top-[62px] left-1/2 w-min -translate-x-1/2">
               <motion.div
                 transition={transition}
                 layoutId="active"
