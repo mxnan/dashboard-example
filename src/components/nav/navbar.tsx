@@ -88,14 +88,17 @@ function DesktopNav({ className }: { className?: string }) {
         restDelta: 0.001,
       }}
       className={cn(
-        "w-full fixed-nav  fixed -top-1  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
+        "w-full fixed-nav fixed -top-1  max-sm:py-6 inset-x-0 border-stone-200 dark:border-stone-800   ",
         isHidden ? "border-b-[5px]   " : "border-b-[1px]  ",
         className
       )}
     >
       <BorderBeam />
       <div className="relative mt-2 px-[1.5rem] max-w-[1686px] mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
+        <Link
+          href="/"
+          className="flex items-center text-gray-600 dark:text-gray-300 gap-3"
+        >
           {pathname === "/" ? (
             <ArrowDown10Icon className="w-5 h-5" />
           ) : (
@@ -110,13 +113,11 @@ function DesktopNav({ className }: { className?: string }) {
                 title="Shimmer Button"
                 href="/components/buttons/shimmer"
                 src="/og.jpg"
-                
               />
               <ContentCard
                 title="Bounce Loader"
                 href="/components/loaders/bounce"
                 src="/og.jpg"
-             
               />
             </div>
           </MenuItem>

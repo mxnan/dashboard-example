@@ -6,10 +6,10 @@ export default function page() {
   const playground = getComponentBySlug("playground");
 
   return (
-    <div className="max-w-4xl mx-auto ">
+    <section className="max-w-4xl mx-auto ">
       <article className="prose-sm">
         <MDXContent source={playground.content} />
       </article>
-    </div>
+    </section>
   );
 }

@@ -18,7 +18,7 @@ export default function ComponentPage({
   const component = getComponentBySlug(`${params.category}/${params.slug}`);
 
   return (
-    <div className="flex flex-col lg:flex-row">
+    <section className="flex flex-col lg:flex-row">
       <div className="w-full max-w-4xl mx-auto ">
         <div className="flex-1 w-full">
           <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">{component.title}</h1>
@@ -41,7 +41,7 @@ export default function ComponentPage({
       <div className="w-full hidden 2xl:right-16 xl:flex lg:w-1/4 xl:w-36 xl:fixed lg:right-6 ">
         <DynamicTableOfContents toc={component.toc} />
       </div>
-    </div>
+    </section>
   );
 }
 

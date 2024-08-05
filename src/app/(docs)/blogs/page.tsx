@@ -14,8 +14,8 @@ export default function page() {
 
   return (
     <section className="max-w-[1536px] w-full mx-auto min-h-screen flex-1 lg:flex max-lg:space-y-32 ">
-      {/* BlogCards section */}
-      <section className="flex-1 h-max flex flex-col gap-8">
+      {/* BlogCards div */}
+      <div className="flex-1 h-max flex flex-col gap-8">
         <div className="space-y-5 lg:ml-12">
           <h1 className="text-7xl font-semibold font-title uppercase">Blogs</h1>
           <p className="text-sm ">
@@ -33,11 +33,11 @@ export default function page() {
             <BlogCard key={blog.slug} post={blog} />
           ))}
         </div>
-      </section>
-      {/* BlogHero section */}
-      <section className="flex-1 ">
+      </div>
+      {/* BlogHero div */}
+      <div className="flex-1 ">
         <BlogHero />
-      </section>
+      </div>
     </section>
   );
 }

@@ -48,8 +48,9 @@ export default function RootLayout({
           <Navbar />
           <div className="overflow-hidden mx-auto container">
             <main className="w-full pt-24">{children}</main>
+            <Footer />
           </div>
-          <Footer />
+
           <Toaster />
         </Providers>
       </body>

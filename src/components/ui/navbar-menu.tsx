@@ -42,15 +42,16 @@ export const MenuItem = ({
         <motion.p
           transition={{ duration: 0.3 }}
           className={cn(
-            "relative capitalize cursor-pointer tracking-wide h-16 text-center py-5 px-5  max-md:px-3 lg:px-7 text-sm md:text-base",
+            "relative capitalize cursor-pointer tracking-wide h-16 flex items-center",
             active === item &&
-              "-translate-y-1 transition-transform ease-in-out duration-300"
+              "-translate-y-1 transition-transform ease-in-out duration-700"
           )}
         >
+          { /* ghost button classes */}
           <span
             className={cn(
-              "transition-all ease-in-out duration-300",
-              isSelected && "font-bold text-stone-600 dark:text-stone-500 "
+              "font-title font-medium text-xl px-6 py-2 ml-2 rounded-2xl hover:bg-stone-100 dark:hover:bg-stone-900 transition-all ease-in-out duration-300",
+              isSelected && " text-gray-500 dark:text-gray-300  "
             )}
           >
             {item}
@@ -64,11 +65,11 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div className="absolute top-[62px] left-1/2 w-min -translate-x-1/2">
+            <div className="absolute top-[80px] left-1/2 w-min -translate-x-1/2">
               <motion.div
                 transition={transition}
                 layoutId="active"
-                className="bg-stone-50 dark:bg-stone-950 backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                className="bg-stone-100 dark:bg-stone-900 backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
               >
                 <motion.div layout className="relative w-max h-full p-4">
                   {children}

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { BorderBeam } from "../magicui/border-beam";
+
 
 const sidebarItems: {
   category: string;
@@ -43,7 +43,7 @@ export default function ComponentSidebar() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
   // useEffect for window resize
-  return <section>{isMobile ? <MobileSidebar /> : <DesktopSidebar />}</section>;
+  return <>{isMobile ? <MobileSidebar /> : <DesktopSidebar />}</>;
 }
 
 export const DesktopSidebar = () => {
