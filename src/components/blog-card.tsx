@@ -10,7 +10,7 @@ interface BlogCardProps {
 export function BlogCard({ post }: BlogCardProps) {
   return (
     <div className="w-full relative max-w-sm border-stone-200 dark:border-stone-800 border h-auto shadow-xl rounded-lg overflow-hidden">
-       <BorderBeam />
+      <BorderBeam size={200} duration={20}  />
       <Link href={`/blogs/${post.slug}`} className="block h-full group/card">
         <div className="p-4 flex flex-col h-full">
           <h2 className="text-xl font-bold  mb-2 line-clamp-2">{post.title}</h2>
@@ -29,10 +29,10 @@ export function BlogCard({ post }: BlogCardProps) {
                 className="relative inline-block w-max rounded-2xl px-2 py-1 m-1 text-xs font-semibold
                 transition-all ease-in-out duration-500 group-hover/card:scale-105
                   text-plight dark:text-pdark 
-                  group-hover/card:bg-gray-200/60 group-hover/card:dark:bg-stone-900
+                  group-hover/card:bg-purple-500/10 group-hover/card:dark:bg-sky-500/10
                "
               >
-                <BorderBeam />
+                <BorderBeam  size={30} borderWidth={1} />
                 {"# "}
                 {tag}
               </span>

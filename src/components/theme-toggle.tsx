@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "./ui/button";
 
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
@@ -36,12 +37,14 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button
+    <Button
+      size={"icon"}
+      variant={"ghost"}
       aria-label="Toggle Dark Mode"
       type="button"
       className="dark-mode-toggle relative rounded-xl w-8 h-8 
       flex items-center justify-center overflow-hidden
-      hover:bg-stone-100 dark:hover:bg-stone-900
+      
       "
       onClick={toggleTheme}
     >
@@ -92,7 +95,7 @@ const ThemeToggle = () => {
           )}
         </AnimatePresence>
       )}
-    </button>
+    </Button>
   );
 };
 

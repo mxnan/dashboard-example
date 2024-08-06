@@ -27,7 +27,7 @@ const MeteorInfo = () => {
           }}
           className="flex flex-col opacity-0 gap-24 sm:gap-8 p-4"
         >
-          <p className=" whitespace-pre-wrap bg-gradient-to-b from-black to-gray-400/60 dark:from-white dark:to-stone-900/90 bg-clip-text text-center text-5xl md:text-[6rem] lg:text-[10rem] 2xl:text-[16rem] font-semibold leading-none text-transparent ">
+          <p className="whitespace-pre-wrap bg-gradient-to-b from-black to-gray-400/60 dark:from-white dark:to-stone-900/90 bg-clip-text text-center text-5xl md:text-[6rem] lg:text-[10rem] 2xl:text-[16rem] font-semibold leading-none text-transparent ">
             Connect ?
           </p>
 
@@ -44,7 +44,7 @@ const MeteorInfo = () => {
                 twitter <TwitterLogoIcon className="w-5 h-5" />
               </a>
             </span>
-            <span className=" relative font-title w-max capitalize font-medium text-xl px-6 py-2 ml-2 rounded-2xl ">
+            <span className="relative font-title w-max capitalize font-medium text-xl px-6 py-2 ml-2 rounded-2xl ">
               <BorderBeam />
               <a
                 target="_blank"

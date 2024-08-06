@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { BorderBeam } from "../magicui/border-beam";
 import Meteors from "../magicui/meteors";
+import { Button } from "./button";
 
 const transition = {
   type: "tween",
@@ -40,7 +41,7 @@ export const MenuItem = ({
       className="relative group/item"
     >
       <Link href={href}>
-        <motion.p
+        <motion.div
           transition={{ duration: 0.3 }}
           className={cn(
             "relative capitalize cursor-pointer tracking-wide h-16 flex items-center",
@@ -49,15 +50,18 @@ export const MenuItem = ({
           )}
         >
           {/* ghost button classes */}
-          <span
+          <Button
+            variant={"ghost"}
+            size={"sm"}
             className={cn(
-              "font-title font-medium text-xl px-6 py-2 ml-2 rounded-2xl hover:bg-stone-100 dark:hover:bg-stone-900 transition-all ease-in-out duration-300",
-              isSelected && " text-gray-500 dark:text-gray-300  "
+              "font-title font-medium text-xl px-6 py-2 ml-2 rounded-xl hover:bg-stone-100 dark:hover:bg-stone-900 ",
+              isSelected &&
+                " text-gray-500 dark:text-gray-400 transition-all ease-in-out duration-300  "
             )}
           >
             {item}
-          </span>
-        </motion.p>
+          </Button>
+        </motion.div>
       </Link>
       {active !== null && (
         <motion.div
@@ -70,7 +74,7 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId="active"
-                className="bg-stone-100 dark:bg-stone-900 backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                className="bg-stone-50 dark:bg-stone-950 backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
               >
                 <motion.div layout className="relative w-max h-full p-4">
                   {children}
@@ -145,18 +149,6 @@ export const ContentCard = ({
           sizes="(max-width: 768px) 128px, 128px"
         />
       </div>
-    </Link>
-  );
-};
-
-//hovered link
-export const HoveredLink = ({ children, ...rest }: any) => {
-  return (
-    <Link
-      {...rest}
-      className="flex items-center justify-between pb-2 border-b capitalize gap-4  text-stone-700 dark:text-stone-300 hover:text-stone-500 dark:hover:text-stone-400"
-    >
-      {children}
     </Link>
   );
 };

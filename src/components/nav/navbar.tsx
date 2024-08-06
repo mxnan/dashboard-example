@@ -3,17 +3,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Link from "next/link";
-import {
-  ContentCard,
-  HoveredLink,
-  Menu,
-  MenuItem,
-} from "@/components/ui/navbar-menu";
+import { ContentCard, Menu, MenuItem } from "@/components/ui/navbar-menu";
 import {
   ArrowDown10Icon,
-  GitBranchPlus,
-  MailCheckIcon,
-  TwitterIcon,
+  LinkedinIcon,
+  LucideTwitter,
+  MailIcon,
 } from "lucide-react";
 import ThemeToggle from "../theme-toggle";
 import MobileNav from "./mobile-nav";
@@ -122,7 +117,7 @@ function DesktopNav({ className }: { className?: string }) {
             </div>
           </MenuItem>
           {/*Blogs*/}
-          <MenuItem setActive={setActive} active={active} item="blogs">
+          <MenuItem setActive={setActive} active={active} item="Blogs">
             <div className="flex flex-col space-y-4 md:space-y-6">
               <ContentCard
                 title="emailjs"
@@ -140,18 +135,33 @@ function DesktopNav({ className }: { className?: string }) {
           </MenuItem>
 
           {/*Contact*/}
-          <MenuItem setActive={setActive} active={active} item="contact">
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/hobby">
-                email <MailCheckIcon />
-              </HoveredLink>
-              <HoveredLink href="/individual">
-                github <GitBranchPlus />
-              </HoveredLink>
-              <HoveredLink href="/team">
-                twitter
-                <TwitterIcon />
-              </HoveredLink>
+          <MenuItem setActive={setActive} active={active} item="Contact">
+            <div className="flex flex-col space-y-4 pr-2 text-sm text-gray-600 dark:text-gray-400">
+              <a
+                href="/contact#email"
+                className="flexbetween group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
+              >
+                email{" "}
+                <MailIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-plight dark:text-pdark" />
+              </a>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://www.linkedin.com/in/manan-negi-377373140/"
+                className="flexbetween group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
+              >
+                linkedin{" "}
+                <LinkedinIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-plight dark:text-pdark" />
+              </a>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://twitter.com/etc_etcx"
+                className="flexbetween group pb-2 border-b-[0.1px] border-gray-300 dark:border-gray-600 capitalize gap-4  "
+              >
+                twitter{" "}
+                <LucideTwitter className="w-4 h-4 group-hover:translate-x-1 transition-transform ease-in-out duration-500 text-plight dark:text-pdark" />
+              </a>
             </div>
           </MenuItem>
         </Menu>

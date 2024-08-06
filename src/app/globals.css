@@ -23,6 +23,11 @@
     align-items: center;
     justify-content: center;
   }
+  .flexbetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   .custom-underline {
     @apply hover:bg-[url('/assets/custom-underline.svg')] dark:hover:bg-[url('/assets/custom-underline-dark.svg')];
   }

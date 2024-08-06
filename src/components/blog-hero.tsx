@@ -49,7 +49,7 @@ export default function BlogHero() {
       <div className="p-2 max-lg:pb-16 
        h-full lg:h-[80vh]
         flex-1 flex-col flex items-center gap-10">
-        <div className="space-y-6 text-center pb-3 border-stone-200 dark:border-stone-800  border-b">
+        <div className="space-y-6 text-center pb-3 border-gray-200 dark:border-gray-800  border-b">
           <p>Manan Negi</p>
           <h1 className="text-3xl">Self taught Web dev. </h1>
           <p>Learnt C in school</p>

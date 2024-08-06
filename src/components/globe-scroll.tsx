@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
 import Particles from "./magicui/particles";
 import { useTheme } from "next-themes";
