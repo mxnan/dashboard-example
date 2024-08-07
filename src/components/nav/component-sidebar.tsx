@@ -14,7 +14,7 @@ const sidebarItems: {
     category: "Buttons",
     items: [
       { name: "Shimmer", href: "/components/buttons/shimmer" },
-      { name: "Pulse", href: "/components/buttons/pulse" },
+      { name: "Bounce", href: "/components/buttons/bounce" },
     ],
   },
   {
@@ -110,7 +110,7 @@ export const DesktopSidebar = () => {
 export const MobileSidebar = () => {
   const pathname = usePathname();
   return (
-    <nav className="h-full overflow-y-auto">
+    <nav className="h-full hidden overflow-y-auto">
       <div className="sticky top-0 p-2">
         <h2 className="text-base font-bold mb-4">Components</h2>
         <Link
