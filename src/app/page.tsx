@@ -1,6 +1,7 @@
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import React from "react";
 
+
 export default function page() {
   return (
     <section className="max-w-[1536px] w-full mx-auto min-h-screen flexcenter flex-1">

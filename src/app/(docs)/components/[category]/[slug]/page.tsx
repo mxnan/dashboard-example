@@ -9,6 +9,18 @@ const DynamicTableOfContents = dynamic(
     ssr: false,
   }
 );
+//metadata
+export const generateMetadata = ({
+  params,
+}: {
+  params: { category: string; slug: string };
+}) => {
+  const component = getComponentBySlug(`${params.category}/${params.slug}`);
+  return {
+    title: component.title,
+    description: component.description,
+  };
+};
 
 export default function ComponentPage({
   params,
@@ -21,7 +33,9 @@ export default function ComponentPage({
     <section className="flex flex-col lg:flex-row">
       <div className="w-full max-w-4xl mx-auto ">
         <div className="flex-1 w-full">
-          <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">{component.title}</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">
+            {component.title}
+          </h1>
           <p className="text-base md:text-lg mb-4">{component.description}</p>
           <div className="flex flex-wrap mb-4">
             {component.tags.map((tag) => (

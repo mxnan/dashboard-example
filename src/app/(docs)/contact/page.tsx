@@ -16,6 +16,11 @@ const Globedynamic = dynamic(() => import("../../../components/globe-scroll"), {
 import dynamic from "next/dynamic";
 
 import React from "react";
+//metadata
+export const metadata = {
+  title: "Contact",
+  description: "Connect with me ?",
+};
 
 export default function page() {
   return (

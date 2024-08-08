@@ -2,6 +2,12 @@ import MDXContent from '@/components/mdx/components';
 import { getComponentBySlug } from '@/lib/component-api';
 import React from 'react'
 
+//metadata
+export const metadata = {
+  title: "Play",
+  description: "Playground for Components",
+};
+
 export default function page() {
   const playground = getComponentBySlug("playground");
 

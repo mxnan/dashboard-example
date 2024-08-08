@@ -22,7 +22,7 @@ export const titleFont = Cuprum({
 
 //metadata
 export const metadata: Metadata = {
-  metadataBase: new URL("https://syntaxui.com"),
+  metadataBase: new URL("https://mxnan.com"),
   title: {
     template: "%s || mxnan",
     default: "mxnan.com",
